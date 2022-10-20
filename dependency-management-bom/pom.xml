@@ -38,6 +38,11 @@
 
             <dependency>
                 <groupId>liga.medical</groupId>
+                <artifactId>common-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>liga.medical</groupId>
                 <artifactId>common-dto</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -51,6 +56,8 @@
                 <artifactId>common-utils</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
+
             <dependency>
                 <groupId>liga.medical</groupId>
                 <artifactId>person-core-api</artifactId>
