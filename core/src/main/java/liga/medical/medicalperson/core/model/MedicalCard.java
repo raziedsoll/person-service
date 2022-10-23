@@ -1,29 +1,44 @@
 package liga.medical.medicalperson.core.model;
 
-import lombok.*;
-import javax.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Column;
+import javax.persistence.GenerationType;
+import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.Entity;
+
 import java.sql.Date;
+
 import java.util.HashSet;
 import java.util.Set;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@Entity
 @Table(name = "medical_card")
 public class MedicalCard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", nullable = false, unique = true)
     private long id;
 
-    @Column(name = "client_status")
+    @Column(name = "client_status", nullable = false)
     private String clientStatus;
 
-    @Column(name = "med_status")
+    @Column(name = "med_status", nullable = false)
     private String medStatus;
 
-    @Column(name = "registry_dt")
-    private java.sql.Date registryDt;
+    @Column(name = "registry_dt", nullable = false)
+    private Date registryDt;
 
     @Column(name = "comment")
     private String comment;
@@ -31,18 +46,12 @@ public class MedicalCard {
     @OneToMany(mappedBy = "medicalCard", cascade = CascadeType.ALL)
     private Set<Illness> illnessSet;
 
-    @OneToOne(mappedBy = "medicalCardId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "medicalCardId", cascade = {CascadeType.DETACH, CascadeType.MERGE,
+            CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY)
     private PersonData personData;
 
-    public MedicalCard(String clientStatus, String medStatus, Date registryDt, String comment) {
-        this.clientStatus = clientStatus;
-        this.medStatus = medStatus;
-        this.registryDt = registryDt;
-        this.comment = comment;
-    }
-
-    public void addIllnessToCard(Illness illness){
-        if (illnessSet == null){
+    public void addIllnessToCard(Illness illness) {
+        if (illnessSet == null) {
             illnessSet = new HashSet<>();
         }
         illnessSet.add(illness);

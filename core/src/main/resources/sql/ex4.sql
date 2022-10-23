@@ -6,8 +6,8 @@ set search_path to medical_schema;
 
 SELECT *
 FROM person_data AS pd1
-         INNER JOIN person_data AS pd2
-                    ON pd1.parent_id = pd2.id
-         INNER JOIN medical_card AS mc
-                    ON pd2.medical_card_id = mc.id
+         JOIN person_data AS pd2
+              ON pd1.parent_id = pd2.id
+         JOIN medical_card AS mc
+              ON pd2.medical_card_id = mc.id
 WHERE mc.med_status = '-'

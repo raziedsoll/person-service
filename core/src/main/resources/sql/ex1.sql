@@ -3,5 +3,5 @@ set search_path to medical_schema;
 
 SELECT *
 FROM contact AS c
-         INNER JOIN address AS a
-                    ON c.id = a.contact_id
+         JOIN address AS a
+              ON c.id = a.contact_id

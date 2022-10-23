@@ -14,7 +14,7 @@ set search_path to medical_schema;
 
 -- Удалить дубликаты
 DELETE
-FROM illness AS il1 using illness as il2
+FROM illness AS il1 USING illness AS il2
 WHERE il1.id > il2.id
   AND il1.type_id = il2.type_id
   AND il1.heaviness = il2.heaviness
