@@ -1,5 +1,7 @@
-package liga.medical.medicalperson.core.model;
+package liga.medical.medicalperson.core.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
@@ -44,10 +46,12 @@ public class MedicalCard {
     private String comment;
 
     @OneToMany(mappedBy = "medicalCard", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Illness> illnessSet;
 
     @OneToOne(mappedBy = "medicalCardId", cascade = {CascadeType.DETACH, CascadeType.MERGE,
             CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY)
+    @JsonBackReference
     private PersonData personData;
 
     public void addIllnessToCard(Illness illness) {

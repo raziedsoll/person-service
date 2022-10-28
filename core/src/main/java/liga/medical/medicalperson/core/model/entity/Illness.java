@@ -1,5 +1,6 @@
-package liga.medical.medicalperson.core.model;
+package liga.medical.medicalperson.core.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
@@ -8,44 +9,42 @@ import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Column;
-import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
+import javax.persistence.GenerationType;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import javax.persistence.Entity;
+
+import java.sql.Date;
+import java.sql.Timestamp;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "address")
-public class Address {
+@Table(name = "illness")
+public class Illness {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
     private long id;
 
-    @Column(name = "country_id", nullable = false)
-    private long countryId;
+    @Column(name = "type_id")
+    private long typeId;
 
-    @Column(name = "city", nullable = false)
-    private String city;
+    @Column(name = "heaviness")
+    private String heaviness;
 
-    @Column(name = "index")
-    private long index;
+    @Column(name = "appearance_dttm", nullable = false)
+    private Timestamp appearanceDttm;
 
-    @Column(name = "street", nullable = false)
-    private String street;
-
-    @Column(name = "building", nullable = false)
-    private String building;
-
-    @Column(name = "flat")
-    private String flat;
+    @Column(name = "recovery_dt")
+    private Date recoveryDt;
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
             CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY)
-    @JoinColumn(name = "contact_id", nullable = false)
-    private Contact contact;
+    @JoinColumn(name = "medical_card_id", nullable = false)
+    @JsonBackReference
+    private MedicalCard medicalCard;
 }

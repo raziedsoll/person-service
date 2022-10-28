@@ -1,21 +1,27 @@
-package liga.medical.medicalperson.core.model;
+package liga.medical.medicalperson.core.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Column;
-import javax.persistence.GenerationType;
-import javax.persistence.OneToOne;
+import javax.persistence.GeneratedValue;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.GenerationType;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
-import javax.persistence.Entity;
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -47,12 +53,25 @@ public class PersonData {
     @JoinColumn(name = "medical_card_id", nullable = false)
     private MedicalCard medicalCardId;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
+            CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY)
     @JoinColumn(name = "contact_id", nullable = false)
     private Contact contactId;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "parent_id", columnDefinition = "check ( parent_id <> id )")
+    @JsonBackReference
     private PersonData parentId;
+
+    @OneToMany(mappedBy = "parentId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private Set<PersonData> parentSet;
+
+    public void addParents(PersonData personData) {
+        if (parentSet == null) {
+            parentSet = new HashSet<>();
+        }
+        parentSet.add(personData);
+    }
 
 }
