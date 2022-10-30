@@ -1,6 +1,7 @@
 set search_path to medical_schema;
 
-CREATE TABLE IF NOT EXISTS medical_card (
+CREATE TABLE IF NOT EXISTS medical_card
+(
     id            bigserial not null primary key,
     client_status char(20)  not null,
     med_status    char(20)  not null,
@@ -8,14 +9,16 @@ CREATE TABLE IF NOT EXISTS medical_card (
     comment       text
 );
 
-CREATE TABLE IF NOT EXISTS contact (
-    id           bigserial    not null  primary key,
+CREATE TABLE IF NOT EXISTS contact
+(
+    id           bigserial    not null primary key,
     phone_number varchar(32)  not null,
-    email        varchar(128) not null ,
+    email        varchar(128) not null,
     profile_link text
 );
 
-CREATE TABLE IF NOT EXISTS person_data (
+CREATE TABLE IF NOT EXISTS person_data
+(
     id              bigserial     not null primary key,
     last_name       varchar(255)  not null,
     first_name      varchar(255)  not null,
@@ -27,7 +30,8 @@ CREATE TABLE IF NOT EXISTS person_data (
     parent_id       bigint check ( parent_id <> id ) references person_data (id)
 );
 
-CREATE TABLE IF NOT EXISTS illness (
+CREATE TABLE IF NOT EXISTS illness
+(
     id              bigserial not null primary key,
     medical_card_id bigint    not null references medical_card (id),
     type_id         bigint,
@@ -36,7 +40,8 @@ CREATE TABLE IF NOT EXISTS illness (
     recovery_dt     date
 );
 
-CREATE TABLE IF NOT EXISTS address (
+CREATE TABLE IF NOT EXISTS address
+(
     id         bigserial    not null primary key,
     contact_id bigint       not null references contact (id),
     country_id bigint       not null,
