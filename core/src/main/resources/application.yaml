@@ -24,11 +24,6 @@ spring:
     enabled: ${LIQUIBASE_ENABLE:true}
     default-schema: medical_schema
 
-  mvc:
-    view:
-      prefix: /templates/jsp/
-      suffix: .jsp
-
   messages:
     basename: validation
 
