@@ -1,6 +1,6 @@
 set search_path to medical_schema;
 
-CREATE VIEW med_card_view AS
+CREATE OR REPLACE VIEW med_card_view AS
 SELECT mc.id,
        mc.client_status,
        mc.med_status,

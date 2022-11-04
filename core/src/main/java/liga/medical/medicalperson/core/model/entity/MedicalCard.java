@@ -49,7 +49,7 @@ public class MedicalCard {
     @JsonManagedReference
     private Set<Illness> illnessSet;
 
-    @OneToOne(mappedBy = "medicalCardId", cascade = {CascadeType.DETACH, CascadeType.MERGE,
+    @OneToOne(mappedBy = "medicalCard", cascade = {CascadeType.DETACH, CascadeType.MERGE,
             CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY)
     @JsonBackReference
     private PersonData personData;
