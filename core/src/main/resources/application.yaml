@@ -34,3 +34,20 @@ mybatis:
   configuration:
     autoMappingUnknownColumnBehavior: warning
     map-underscore-to-camel-case: true
+
+logging:
+  level:
+    org.springframework.jdbc.core: trace
+
+  file:
+    name: person-service.log
+
+management:
+  endpoint:
+    loggers:
+      enabled: true
+
+  endpoints:
+    web:
+      exposure:
+        include: "health, info, loggers"
