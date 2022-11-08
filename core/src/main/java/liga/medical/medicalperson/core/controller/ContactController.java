@@ -1,5 +1,8 @@
 package liga.medical.medicalperson.core.controller;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import liga.medical.medicalperson.core.model.entity.Contact;
 import liga.medical.medicalperson.core.service.api.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/contact")
+@Api(value = "API для получения информации об контактах")
 public class ContactController {
 
     private final ContactService contactServiceImp;
@@ -25,23 +29,29 @@ public class ContactController {
     }
 
     @GetMapping(path = "/all", produces = "application/json")
+    @ApiOperation(value = "Получения всего списка контактов")
     public List<Contact> getAllContact() {
         return contactServiceImp.getAllContact();
     }
 
     @GetMapping(path = "/{contactId}", produces = "application/json")
-    public Contact getContactById(@PathVariable("contactId") int contactId) {
+    @ApiOperation(value = "Получения контакта по id")
+    public Contact getContactById(@PathVariable("contactId") @ApiParam(name = "contactId",
+            value = "Contact id", example = "1") int contactId) {
         Contact contact = contactServiceImp.getAddressesFromContact(contactId);
         return contact;
     }
 
     @PostMapping(path = "/new_contact")
+    @ApiOperation(value = "Добавить новый контакт")
     public int postContact(@RequestBody Contact contact) {
         return contactServiceImp.postContact(contact);
     }
 
     @DeleteMapping(path = "/delete_contact/{contactId}")
-    public void deleteContact(@PathVariable("contactId") int contactId) {
+    @ApiOperation(value = "Удаление контакта по id")
+    public void deleteContact(@PathVariable("contactId") @ApiParam(name = "contactId",
+            value = "Contact id", example = "1") int contactId) {
         contactServiceImp.deleteContact(contactId);
     }
 }

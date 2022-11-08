@@ -12,7 +12,7 @@ import java.util.List;
 public interface PersonDataMapper {
     @Insert("insert into person_data " +
             "values(#{id},#{lastName},#{firstName},#{birthDt}," +
-            "#{age},#{sex},#{contactId},#{medicalCardId},#{parentId})")
+            "#{age},#{sex},#{contact},#{medicalCard},#{parent})")
     int postPersonData(PersonData personData);
 
     @Select("select * from person_data where id=#{id}")

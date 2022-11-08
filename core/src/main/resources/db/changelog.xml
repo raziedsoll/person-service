@@ -9,4 +9,5 @@
     <include file="db/0.0.3/security-tab.xml"/>
     <include file="db/0.0.3/fill-roles.xml"/>
     <include file="db/0.0.3/add-admin.xml"/>
+    <include file="db/0.0.4/log-table.xml"/>
 </databaseChangeLog>

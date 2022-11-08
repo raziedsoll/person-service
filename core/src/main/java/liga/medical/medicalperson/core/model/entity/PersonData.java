@@ -51,19 +51,19 @@ public class PersonData {
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "medical_card_id", nullable = false)
-    private MedicalCard medicalCardId;
+    private MedicalCard medicalCard;
 
     @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
             CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY)
     @JoinColumn(name = "contact_id", nullable = false)
-    private Contact contactId;
+    private Contact contact;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "parent_id", columnDefinition = "check ( parent_id <> id )")
     @JsonBackReference
-    private PersonData parentId;
+    private PersonData parent;
 
-    @OneToMany(mappedBy = "parentId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
     private Set<PersonData> parentSet;
 

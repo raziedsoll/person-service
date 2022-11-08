@@ -13,6 +13,12 @@
     <packaging>jar</packaging>
     <artifactId>person-core</artifactId>
     <dependencies>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-boot-starter</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
