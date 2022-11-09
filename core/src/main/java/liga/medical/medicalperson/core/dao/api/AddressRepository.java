@@ -1,13 +1,6 @@
 package liga.medical.medicalperson.core.dao.api;
 
 import liga.medical.medicalperson.core.model.entity.Address;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-
-public interface AddressRepository {
-    List<Address> getAllAddresses();
-
-    int postAddress(Address address);
-
-    void deleteAddress(int id);
-}
+public interface AddressRepository extends JpaRepository<Address, Long> { }

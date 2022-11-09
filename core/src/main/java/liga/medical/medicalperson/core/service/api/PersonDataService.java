@@ -1,15 +1,9 @@
 package liga.medical.medicalperson.core.service.api;
 
-import liga.medical.medicalperson.core.model.pojo.PersonData;
-
-import java.util.List;
+import liga.medical.medicalperson.core.model.entity.PersonData;
 
 public interface PersonDataService {
-    int postPersonData(PersonData personData);
+    PersonData saveOrUpdatePersonData(PersonData personData);
 
-    PersonData getPersonDataById(int id);
-
-    List<PersonData> getAllPersonData();
-
-    void deletePersonData(int id);
+    PersonData findById(Long id);
 }

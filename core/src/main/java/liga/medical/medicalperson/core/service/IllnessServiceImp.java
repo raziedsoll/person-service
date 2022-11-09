@@ -1,30 +1,19 @@
 package liga.medical.medicalperson.core.service;
 
-import liga.medical.medicalperson.core.mapper.IllnessMapper;
-import liga.medical.medicalperson.core.model.pojo.Illness;
+import liga.medical.medicalperson.core.dao.api.IllnessRepository;
+import liga.medical.medicalperson.core.model.entity.Illness;
 import liga.medical.medicalperson.core.service.api.IllnessService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
+@RequiredArgsConstructor
 public class IllnessServiceImp implements IllnessService {
 
-    private final IllnessMapper illnessMapper;
-
-    @Autowired
-    IllnessServiceImp(IllnessMapper illnessMapper) {
-        this.illnessMapper = illnessMapper;
-    }
+    private final IllnessRepository illnessRepository;
 
     @Override
-    public List<Illness> getAllIllness() {
-        return illnessMapper.getAllIllness();
-    }
-
-    @Override
-    public int postIllness(Illness illness) {
-        return illnessMapper.postIllness(illness);
+    public Illness updateIllness(Illness illness) {
+        return illnessRepository.save(illness);
     }
 }

@@ -1,40 +1,24 @@
 package liga.medical.medicalperson.core.service;
 
-import liga.medical.medicalperson.core.mapper.PersonDataMapper;
-import liga.medical.medicalperson.core.model.pojo.PersonData;
+import liga.medical.medicalperson.core.dao.api.PersonDataRepository;
+import liga.medical.medicalperson.core.model.entity.PersonData;
 import liga.medical.medicalperson.core.service.api.PersonDataService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
+@RequiredArgsConstructor
 public class PersonDataServiceImp implements PersonDataService {
 
-    private final PersonDataMapper personDataMapper;
+    private final PersonDataRepository personDataRepository;
 
-    @Autowired
-    PersonDataServiceImp(PersonDataMapper personDataMapper) {
-        this.personDataMapper = personDataMapper;
+    @Override
+    public PersonData saveOrUpdatePersonData(PersonData personData) {
+        return personDataRepository.save(personData);
     }
 
     @Override
-    public int postPersonData(PersonData personData) {
-        return personDataMapper.postPersonData(personData);
-    }
-
-    @Override
-    public PersonData getPersonDataById(int id) {
-        return personDataMapper.getPersonDataById(id);
-    }
-
-    @Override
-    public List<PersonData> getAllPersonData() {
-        return personDataMapper.getAllPersonData();
-    }
-
-    @Override
-    public void deletePersonData(int id) {
-        personDataMapper.deletePersonData(id);
+    public PersonData findById(Long id) {
+        return personDataRepository.findById(id).get();
     }
 }

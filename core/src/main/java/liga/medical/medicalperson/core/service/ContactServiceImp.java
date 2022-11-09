@@ -3,38 +3,18 @@ package liga.medical.medicalperson.core.service;
 import liga.medical.medicalperson.core.dao.api.ContactRepository;
 import liga.medical.medicalperson.core.model.entity.Contact;
 import liga.medical.medicalperson.core.service.api.ContactService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
+@RequiredArgsConstructor
 public class ContactServiceImp implements ContactService {
 
-    private final ContactRepository contactRepositoryImp;
-
-    @Autowired
-    ContactServiceImp(ContactRepository contactRepositoryImp) {
-        this.contactRepositoryImp = contactRepositoryImp;
-    }
+    private final ContactRepository contactRepository;
 
     @Override
-    public Contact getAddressesFromContact(int contactId) {
-        return contactRepositoryImp.getContactById(contactId);
+    public Contact updateContact(Contact contact) {
+        return contactRepository.save(contact);
     }
 
-    @Override
-    public int postContact(Contact contact) {
-        return contactRepositoryImp.postContact(contact);
-    }
-
-    @Override
-    public void deleteContact(int id) {
-        contactRepositoryImp.deleteContact(id);
-    }
-
-    @Override
-    public List<Contact> getAllContact() {
-        return contactRepositoryImp.getAllContact();
-    }
 }

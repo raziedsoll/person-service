@@ -1,6 +1,5 @@
 package liga.medical.medicalperson.core.aspect;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -18,7 +17,7 @@ import java.util.Arrays;
 @Component
 public class RestLoggingAspect {
     @Before("PointCuts.allRestMethods()")
-    public void beforeAllRestMethodAdvice(JoinPoint joinPoint) throws JsonProcessingException {
+    public void beforeAllRestMethodAdvice(JoinPoint joinPoint) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String userName = auth.getName();
         String methodName = joinPoint.getSignature().getName();

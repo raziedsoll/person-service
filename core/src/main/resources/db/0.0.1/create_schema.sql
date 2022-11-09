@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS medical_card
 (
     id            bigserial not null primary key,
     client_status char(20)  not null,
-    med_status    char(20)  not null,
+    med_status    char(20)  ,
     registry_dt   date      not null,
     comment       text
 );

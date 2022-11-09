@@ -1,7 +1,7 @@
 set search_path to medical_schema;
 
 --medical_card
-insert into medical_card (client_status, med_status, registry_dt, comment) values ('P', '-', '2022-07-24', 'Amcinonide');
+insert into medical_card (client_status, med_status, registry_dt, comment) values ('P', null, '2022-07-24', 'Amcinonide');
 insert into medical_card (client_status, med_status, registry_dt, comment) values ('P', 'W', '2022-06-03', 'AVOBENZONE, HOMOSALATE, OCTISALATE, OCTOCRYLENE, OXYBENZONE');
 insert into medical_card (client_status, med_status, registry_dt, comment) values ('F', 'D', '2022-06-06', 'Quinapril');
 insert into medical_card (client_status, med_status, registry_dt, comment) values ('P', 'D', '2022-08-24', 'Camphor, Menthol');
@@ -10,7 +10,7 @@ insert into medical_card (client_status, med_status, registry_dt, comment) value
 insert into medical_card (client_status, med_status, registry_dt, comment) values ('P', 'D', '2022-05-21', 'Octinoxate and Titanium dioxide');
 insert into medical_card (client_status, med_status, registry_dt, comment) values ('F', 'D', '2022-02-24', 'Trichloroacetic Acid');
 insert into medical_card (client_status, med_status, registry_dt, comment) values ('P', 'D', '2021-12-27', 'Isometheptene Mucate, DICHLORALPHENAZONE, and ACETAMINOPHEN');
-insert into medical_card (client_status, med_status, registry_dt, comment) values ('F', 'W', '2022-06-17', 'Pigweed Rough Redroot');
+insert into medical_card (client_status, med_status, registry_dt, comment) values ('F', null, '2022-06-17', 'Pigweed Rough Redroot');
 insert into medical_card (client_status, med_status, registry_dt, comment) values ('P', 'W', '2022-02-08', 'OCTINOXATE');
 insert into medical_card (client_status, med_status, registry_dt, comment) values ('F', 'D', '2022-06-06', 'Chlorpheniramine maleate, Phenylephrine HCl');
 insert into medical_card (client_status, med_status, registry_dt, comment) values ('P', 'D', '2022-08-22', 'Nicotine polacrilex');
@@ -77,20 +77,20 @@ insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, 
 insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Wiggins', 'Jasmine', '2022-05-12', 13, 'F', 5, 5, null);
 insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Tyreman', 'Hildegaard', '2022-07-09', 46, 'F', 6, 6, null);
 insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Crumly', 'Tedra', '2021-12-03', 35, 'F', 7, 7, null);
-insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Cuncarr', 'Serene', '2022-04-16', 52, 'F', 8, 8, null);
+insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Cuncarr', 'Serene', '2022-04-16', 52, 'F', 8, 8, 6);
 insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Hailwood', 'Tim', '2022-04-06', 32, 'M', 9, 9, null);
-insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Sturror', 'Amity', '2022-01-11', 55, 'F', 10, 10, null);
+insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Sturror', 'Amity', '2022-01-11', 55, 'F', 10, 10, 4);
 insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Batson', 'Burr', '2022-03-07', 45, 'M', 11, 11, null);
 insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Dumsday', 'Sutherland', '2022-04-16', 28, 'M', 12, 12, null);
-insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Di Giacomo', 'Angie', '2021-11-20', 94, 'M', 13, 13, null);
+insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Di Giacomo', 'Angie', '2021-11-20', 94, 'M', 13, 13, 3);
 insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Ducker', 'Ricard', '2021-12-03', 84, 'F', 14, 14, null);
-insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Ivins', 'La verne', '2022-02-24', 67, 'F', 15, 15, null);
+insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Ivins', 'La verne', '2022-02-24', 67, 'F', 15, 15, 2);
 insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Ondrousek', 'Teodor', '2022-08-18', 41, 'M', 16, 16, null);
 insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Wathan', 'Manolo', '2022-10-02', 1, 'M', 17, 17, null);
-insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Kubin', 'Hagan', '2022-07-04', 11, 'M', 18, 18, null);
+insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Kubin', 'Hagan', '2022-07-04', 11, 'M', 18, 18, 10);
 insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Charnley', 'Baxter', '2022-01-25', 29, 'M', 19, 19, null);
 insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Hufton', 'Leola', '2022-02-15', 5, 'F', 20, 20, null);
-insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Busher', 'Caria', '2021-11-24', 59, 'F', 21, 21, null);
+insert into person_data (last_name, first_name, birth_dt, age, sex, contact_id, medical_card_id, parent_id) values ('Busher', 'Caria', '2021-11-24', 59, 'F', 21, 21, 1);
 
 --address
 insert into address (contact_id, country_id, city, index, street, building, flat) values (1, 52, 'Chao', 42, 'Mallory', 'Junction', '678');

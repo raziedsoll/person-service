@@ -1,5 +1,6 @@
 package liga.medical.medicalperson.core.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,10 +13,8 @@ import javax.persistence.Column;
 import javax.persistence.GenerationType;
 import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
 import javax.persistence.Entity;
 
-import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -23,11 +22,12 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "contact")
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private int id;
+    private Long id;
 
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
@@ -38,19 +38,8 @@ public class Contact {
     @Column(name = "profile_link")
     private String profileLink;
 
-    @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL)
     @JsonManagedReference
     private Set<Address> addressSet;
 
-//    @OneToOne(mappedBy = "contactId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    @JsonBackReference
-//    private PersonData personData;
-
-    public void addAdressesToContact(Address address) {
-        if (addressSet == null) {
-            addressSet = new HashSet<>();
-        }
-        addressSet.add(address);
-        address.setContact(this);
-    }
 }

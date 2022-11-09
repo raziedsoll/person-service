@@ -5,7 +5,7 @@
         xmlns:pro="http://www.liquibase.org/xml/ns/pro"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd
       http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.5.xsd">
-    <changeSet author="Ramsay" id="4">
+    <changeSet author="Ramsay" id="3">
 
         <comment>Таблицы для аутентификации</comment>
         <createTable tableName="users">

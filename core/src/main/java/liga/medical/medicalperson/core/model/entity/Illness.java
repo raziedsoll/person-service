@@ -1,6 +1,7 @@
 package liga.medical.medicalperson.core.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
@@ -24,11 +25,12 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @Entity
 @Table(name = "illness")
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Illness {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private long id;
+    private Long id;
 
     @Column(name = "type_id")
     private long typeId;
@@ -36,7 +38,7 @@ public class Illness {
     @Column(name = "heaviness")
     private String heaviness;
 
-    @Column(name = "appearance_dttm", nullable = false)
+    @Column(name = "appearance_dttm", nullable = false, updatable = false)
     private Timestamp appearanceDttm;
 
     @Column(name = "recovery_dt")
@@ -44,7 +46,7 @@ public class Illness {
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
             CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY)
-    @JoinColumn(name = "medical_card_id", nullable = false)
+    @JoinColumn(name = "medical_card_id", nullable = false, updatable = false)
     @JsonBackReference
     private MedicalCard medicalCard;
 }

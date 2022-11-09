@@ -7,18 +7,17 @@
       http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.5.xsd">
     <changeSet author="Ramsay" id="7">
 
-        <comment>Таблица логирования аутентификации</comment>
-        <createTable tableName="auth_logs">
+        <comment></comment>
+        <createTable tableName="signals">
             <column name="id" autoIncrement="true" type="bigserial">
                 <constraints nullable="false" unique="true" primaryKey="true"/>
             </column>
-            <column name="username" type="varchar(255)">
-                <constraints nullable="false"/>
+            <column name="person_data_id" type="bigint">
+                <constraints nullable="false" references="person_data(id)" foreignKeyName="peson_dataFK"/>
             </column>
-            <column name="successfully" type="boolean">
-                <constraints nullable="false"/>
+            <column name="description" type="text">
             </column>
-            <column name="data_time" type="timestamp">
+            <column name="type" type="varchar">
                 <constraints nullable="false"/>
             </column>
         </createTable>
